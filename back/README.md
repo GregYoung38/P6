@@ -18,6 +18,7 @@ En cas de vulnérabilités constatées, utilisez successivement les commandes `n
 
 # ----- Configuration requise
 Ajoutez un fichier .env à la racine du dossier `back` et complétez les valeurs pour la connection à votre base MongoDB :
+
     PORT = 3000
     DB_LOGIN = { votre identifiant sur mon MongoDB }
     DB_PWD = { votre mot de passe sur mon MongoDB }
