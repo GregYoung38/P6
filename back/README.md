@@ -1,8 +1,8 @@
 # HOT TAKES : BACK-END
-Auteur      : Grégory CALOIN <https://github.com/GregYoung38>
-Réalisation : Août/Sept 2022
-Editeur     : Visual Studio Code (version 1.71.2)
-NodeJS      : Version 16.14.2
+    Auteur      : Grégory CALOIN <https://github.com/GregYoung38>
+    Réalisation : Août/Sept 2022
+    Editeur     : Visual Studio Code (version 1.71.2)
+    NodeJS      : Version 16.14.2
 
 
 # ----- Installation des paquets
