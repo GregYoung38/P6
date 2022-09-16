@@ -1,0 +1,8 @@
+> Installation :
+  Après le traditionnel npm install sur le back, faire un : npm install --save-dev nodemon
+
+> Démarrer le serveur :
+  - Côté BACKEND  : cd back/    +    npm start
+  - Côté FRONTEND : cd front/   +    npm start
+
+https://github.com/GregYoung38/P6.git
