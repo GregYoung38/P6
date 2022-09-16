@@ -19,13 +19,13 @@ function checkingUser(req, userId){
 exports.getAllSauces = (req, res, next) => {
     sauceModel.find()
     .then((sauces) => res.status(200).json(sauces))
-    .catch((error) => res.status(400).json({error: error}))
+    .catch((error) => res.status(400).json({ error }))
 };
 
 exports.getOneSauce = (req, res, next) => {
     sauceModel.findOne({ _id: req.params.id })
     .then(sauce => res.status(200).json(sauce))
-    .catch(err => res.status(404).json({error: err}))
+    .catch(error => res.status(404).json({ error }))
 };
 
 exports.createSauce = (req, res, next) => {
@@ -39,7 +39,7 @@ exports.createSauce = (req, res, next) => {
     
     _sauce.save()
     .then( () => res.status(201).json({ message: "Sauce créée avec succès !" }))
-    .catch( (err) => res.status(400).json({ err }))
+    .catch( (error) => res.status(400).json({ error }))
 };
 
 exports.modifySauce = (req, res, next) => {
@@ -71,7 +71,7 @@ exports.deleteSauce = (req, res, next) => {
     sauceModel.findOne({ _id: req.params.id }) 
     .then((data) => {
         if (!checkingUser(req, data.userId)) {
-            return res.status(403).json({message : "Action non autorisée"})
+            return res.status(403).json({ message : "Action non autorisée"})
         }
         const filename = data.imageUrl.split("/pictures/")[1]; // On récupère le nom du fichier image dans l'URL
         
@@ -136,5 +136,5 @@ exports.reactSauce = (req, res, next) => {
           .catch((error) => res.status(400).json({ error }));
         };
     })      
-    .catch((error) => res.status(404).json({error}));
+    .catch((error) => res.status(404).json({ error }));
 };

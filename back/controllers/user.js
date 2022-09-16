@@ -34,9 +34,9 @@ exports.create_user = (req, res, next) => {
             });
             user.save()
             .then(() => res.status(201).json())
-            .catch(err => res.status(400).json({ err }))
+            .catch(err => res.status(400).json({ message : 'Erreur de requête' }))
         })
-        .catch(() => res.status(500).json({ message: 'Erreur de serveur' }))
+        .catch(() => { return res.status(500).json({ error }) } )
     }    
 }
 
@@ -48,7 +48,7 @@ exports.connect_user = (req, res, next) => {
                 Le mail est absent de la base de données
                 Si l'e-mail ne correspond à aucun utilisateur existant, on arrête tout.
             */
-            return res.status(401).json( new Error );
+            return res.status(401).json({ message : 'Action non-autorisée' });
         }
 
         /*
@@ -62,14 +62,14 @@ exports.connect_user = (req, res, next) => {
                 /*  
                     Le mot de passe ne correspond pas au login saisi.
                 */
-                return res.status(401).json({ error });
+                return res.status(401).json({ message: 'Action non-autorisée' });
             } 
 
             // Envoi du token avec la réponse attendue du front-end:
             res.status(200).json({
                 /*
-                    S'ils correspondent, les informations d'identification de notre utilisateur sont valides. 
-                    Dans ce cas, nous renvoyons une réponse 200 contenant l'ID utilisateur et un token.
+                    S'ils correspondent, les informations d'identification de l'utilisateur sont valides. 
+                    Dans ce cas, je renvoie une réponse 200 contenant l'ID utilisateur et un token.
                 */
                
                 userId: user._id,
@@ -84,7 +84,7 @@ exports.connect_user = (req, res, next) => {
                 */
             })
         })
-        .catch(error => res.status(401).json( new Error()));
+        .catch(error => res.status(401).json({ message : 'Action non-autorisée' }));
     })
     .catch(error => res.status(500).json({ error }));
 }

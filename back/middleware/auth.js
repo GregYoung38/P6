@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
             /* Décoder l'identifiant-utilisateur (verify) */
             const userId = jwt.verify(req.headers.authorization.split(" ")[1], process.env.RANDOM_TOKEN_SECRET).userId;        
             if (req.body.userId && req.body.userId !== userId) { 
-                throw 'Utilisateur non-valide' 
+                throw new Error(401, 'Utilisateur non-valide')
             } 
             else { 
                 next()
@@ -18,9 +18,7 @@ module.exports = (req, res, next) => {
         }
     } 
     catch {
-        res.status(401).json({
-            error: new Error('Erreur de requête')
-        });
+        res.status(400).json({ message : 'Erreur de requête' })
     }
 };
 
